@@ -4,7 +4,7 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/pizzaBlock/Skeleton";
 import PizzaBlock from "../components/pizzaBlock/PizzaBlock";
 
-  const Home = () => {
+const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -15,10 +15,11 @@ import PizzaBlock from "../components/pizzaBlock/PizzaBlock";
         setItems(arr);
         setIsLoading(false);
       });
+    window.scrollTo(0,0)
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -29,7 +30,7 @@ import PizzaBlock from "../components/pizzaBlock/PizzaBlock";
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
       </div>
-    </>
+    </div>
   );
 };
-export default Home
+export default Home;
